@@ -75,9 +75,9 @@ const App = () => {
             <h1 className="text-2xl font-bold">Countries</h1>
             <button
               onClick={toggleTheme}
-              className="bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded px-4 py-2"
+              className="text-2xl"
             >
-              {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+              {isDarkMode ? '☀️' : '🌙'}
             </button>
           </div>
 
