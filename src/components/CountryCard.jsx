@@ -15,7 +15,7 @@ const CountryCard = ({ country }) => {
   }
 
   return (
-    <div className="border rounded-lg p-4 shadow-lg bg-white dark:bg-gray-800 dark:text-white transition-colors duration-500">
+    <div className="border rounded-lg p-4 shadow-lg bg-white dark:bg-gray-800 dark:text-white transition-colors duration-300">
     
       <div className="w-full h-40 overflow-hidden mb-2">
         <img 
