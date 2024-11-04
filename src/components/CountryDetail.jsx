@@ -12,8 +12,8 @@ const CountryDetail = ({ countries }) => {
 
   return (
     <div className="container mx-auto p-4">
-      <button 
-        onClick={() => navigate(-1)} 
+      <button
+        onClick={() => navigate(-1)}
         className="mb-4 bg-gray-200 dark:bg-gray-800 text-black dark:text-white px-4 py-2 rounded"
       >
         Back
@@ -21,9 +21,9 @@ const CountryDetail = ({ countries }) => {
 
       <div className="flex flex-col md:flex-row gap-8 items-start">
         <div className="w-full md:w-1/2">
-          <img 
-            src={country.flags.svg} 
-            alt={`${country.name.common} flag`} 
+          <img
+            src={country.flags.svg}
+            alt={`${country.name.common} flag`}
             className="w-full h-auto max-w-md mx-auto object-contain"
           />
         </div>
