@@ -9,10 +9,10 @@ A responsive React app to explore country information, featuring dark mode, a se
 - **Country Details**: View extended details about each country on a dedicated page.
 
 ## Screenshots
-![Home Page Light Mode](./screenshots/home-light.png)  
+![Home Page Light Mode](public/screenshots/home-light.png)  
 *Home Page in Light Mode*
 
-![Home Page Dark Mode](./screenshots/home-dark.png)  
+![Home Page Dark Mode](public/screenshots/home-dark.png)  
 *Home Page in Dark Mode*
 
 ## Installation
