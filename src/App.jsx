@@ -9,14 +9,12 @@ import { useFetch } from './hooks/useFetch';
 const App = () => {
 
   const { countries, loading, error } = useFetch(`https://restcountries.com/v3.1/all`);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectTerm, setSelectTerm] = useState("");
+  const [sortBy, setSortBy] = useState("name");
 
   const filteredCountries = countries.filter((country) =>
-    country.name.common.toLowerCase().includes(searchTerm.toLowerCase()) || []
+    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (loading) {
@@ -26,6 +24,8 @@ const App = () => {
   if (error) {
     return <div className="text-center text-red-500">Error: {error}</div>;
   }
+
+  console.log(selectTerm, sortBy);
 
   return (
     <CountriesProvider>
@@ -39,9 +39,38 @@ const App = () => {
                 type="text"
                 placeholder="Search for a country"
                 value={searchTerm}
-                onChange={handleSearch}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white dark:border-gray-700"
               />
+
+              <select
+                value={selectTerm}
+                onChange={(e) => setSelectTerm(e.target.value)}
+                className='dark:text-white dark:bg-black'
+              >
+                <option value="" hidden>Filter by Region</option>
+                <option value="">All Regions</option>
+                <option value="Antarctic">Antarctic</option>
+                <option value="Asia">Asia</option>
+                <option value="Africa">Africa</option>
+                <option value="Europe">Europe</option>
+                <option value="Americas">Americas</option>
+                <option value="Oceania">Oceania</option>
+              </select>
+
+              <input
+                type="radio"
+                value="population"
+                onChange={(e) => setSortBy(e.target.value)}
+                checked={sortBy === "population"}
+              /> Population (asc)
+
+              <input
+                type="radio"
+                value="name"
+                onChange={(e) => setSortBy(e.target.value)}
+                checked={sortBy === "name"}
+              /> By name (asc)
             </div>
 
             <Routes>
@@ -49,9 +78,14 @@ const App = () => {
                 path="/"
                 element={
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {filteredCountries.map((country) => (
-                      <CountryCard key={country.cca3} country={country} />
-                    ))}
+                    {filteredCountries
+                      .filter(country => country.region.toLowerCase().includes(selectTerm.toLowerCase()))
+                      .sort(
+                        (a, b) => (sortBy === "name" ? a.name.common.localeCompare(b.name.common) : b.population - a.population)
+                      )
+                      .map((country) => (
+                        <CountryCard key={country.cca3} country={country} />
+                      ))}
                   </div>
                 }
               />
