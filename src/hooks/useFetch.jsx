@@ -20,11 +20,11 @@ export const useFetch = (url) => {
             setLoading(false);
         }
     };
-    
+
     useEffect(() => {
         fetchCountries();
-    }, []);
-   
+    }, [url]);
+
     return { countries, error, loading };
 }
 

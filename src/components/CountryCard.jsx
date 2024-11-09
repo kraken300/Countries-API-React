@@ -17,7 +17,7 @@ const CountryCard = ({ country }) => {
   return (
     <div className="border rounded-lg p-4 shadow-lg bg-white dark:bg-gray-800 dark:text-white transition-colors duration-300">
     
-      <div className="w-full h-40 overflow-hidden mb-2">
+      <div className="w-full h-52 md:h-44 overflow-hidden object-covers object-center mb-2">
         <img 
           src={country.flags.svg} 
           alt={`${country.name.common} flag`} 
