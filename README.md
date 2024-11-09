@@ -48,3 +48,7 @@ src/
 └── main.jsx                  # React entry point for Vite
 
 ```
+
+## API Reference
+
+- **Countries API**: `https://restcountries.com/v3.1/all`
